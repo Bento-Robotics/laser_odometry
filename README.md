@@ -1,11 +1,17 @@
 # laser_odometry
 Everything to get the Lidar mapping to work
-First of all intitialize a new workspace for your tf2 stuff
+To get started, download all dependencies first with the following command: 
+```
+sudo apt install ros-humble-slam-toolbox
+``` 
+Then intitialize a new workspace for your tf2 stuff
 ```
 mkdir tf2_ws
 ```
-as well as a source folder
+as well as a source folder in the new workspace
 ```
+cd tf2_ws
+
 mkdir src
 ```
 Then simply clone the rf2o_laser_odometry github: https://github.com/MAPIRlab/rf2o_laser_odometry
@@ -32,10 +38,7 @@ You should see a lot of spamming with a line inbetween stating: Laser odom [x,y,
 If you only see: waiting for laser_scans..... then something went wrong, probably because you dont have a lidar connected to your device. 
 **Info:** If you dont start the command first the following command(s) will give you error messages saying they cant find the laser scan. That is because the command stated above runs the tf2 transformations that tell the programm where the robotor is on the map, which are curcial for the process to work.
 
-Now for the second part you will start by getting the actual mapping software via the command:
-```
-sudo apt install ros-humble-slam-toolbox
-``` 
+Now for the second part you will start the actual mapping software with the dependencies youve installed. 
 Simply run the command: 
 ```
 ros2 run slam_toolbox async_slam_toolbox_node --ros-args -p base_frame:=base_link 
@@ -52,4 +55,5 @@ Lastly the topic you need to check in Rviz2 are:
 - Click add, search by topics, and add laserScan and make sure the topic is /scan
 - Click add, search by topics, and add Map
 
-Now you should have a working map to see!(if you want to not have to repeat the last 3 steps, simply press Ctrl and S while in Rviz2 to save it as a preset)
+Now you should have a working map to see!
+(if you want to not have to repeat the last 3 steps, simply press Ctrl and S while in Rviz2 to save it as a preset)
