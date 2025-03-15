@@ -1,5 +1,6 @@
 # laser_odometry
-Everything to get the Lidar mapping to work
+Everything to get the Lidar mapping to work:
+
 To get started, download all dependencies first with the following command: 
 ```
 sudo apt install ros-humble-slam-toolbox
